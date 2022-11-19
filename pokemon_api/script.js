@@ -1,8 +1,9 @@
+// Allocation of Variables :
 let divEL = document.getElementById('cards')
 let data1;
 let image;
 let result;
-
+// Fetching datas from Static-API :
 let pokemon = async function () {
     try {
         let url = 'https://api.pokemontcg.io/v2/cards'
@@ -19,7 +20,7 @@ let pokemon = async function () {
     }
 }
 pokemon();
-
+// Pagination :
 function firstPage() {
     divEL.innerHTML = "";
     for (i=0; i<48 ; i++){

@@ -20,7 +20,6 @@ body{
 }
 
 #filter{
-    /* background-color: red; */
     width: 28em;
     display: flex;
     flex-direction: row;
@@ -38,7 +37,6 @@ body{
 }
 
 #search{
-    /* background-color: blue; */
     width: 26em;
 }
 

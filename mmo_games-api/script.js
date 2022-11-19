@@ -1,3 +1,4 @@
+// Allocation of Variables :
 const contentEl = document.getElementById("content")
 const content2El = document.getElementById("content2")
 const optionsEl = document.getElementById("filterSelction")
@@ -5,11 +6,12 @@ const inputEl = document.getElementById("input")
 const searchEl = document.getElementById("button")
 const paginationEl = document.getElementById("pagination")
 const copyrights = document.getElementById("copyrights")
+let pagesArr = [0,50,100,150,200,250,300,350,400,450,500];
 let currentPage;
 let result;
 let gameFilter = [];
 let games=[];
-
+// Fetching datas from Static-API :
 const options = {
 	method: 'GET',
 	headers: {
@@ -32,7 +34,7 @@ async function mmoGames () {
 			contentEl.innerHTML = "";
 
 			if (optionFilter === "All Items") {firstPage()};
-
+//  Search button click event :
 			if (searchFilter === ""){
 				contentEl.innerHTML = "";
 				for (let i=0; i<50; i++){			
@@ -55,7 +57,6 @@ async function mmoGames () {
 											<div class="card-body">
 											<a href="${gameLink}" class="card-link">Game Download link</a>
 										</div>`
-
 				
 			} }
 			if (searchFilter !== "") {
@@ -83,7 +84,7 @@ async function mmoGames () {
 									paginationEl.innerHTML = ""
 			} }	
 		})
-		
+// Inserting datas to HTML :
 		function firstPage () {
 		for (let i=0; i<50; i++){			
 			let title = result[i].title;
@@ -122,9 +123,7 @@ async function mmoGames () {
 	catch(err) {console.log(err)};
 }
 mmoGames();
-
-let pagesArr = [0,50,100,150,200,250,300,350,400,450,500];
-
+// Common function creation for pagination :
 function contentPush (a,b) {
 	for (let i=a; i<b; i++){
 		let title = result[i].title;
@@ -147,7 +146,7 @@ function contentPush (a,b) {
 									<a href="${gameLink}" class="card-link">Game Download link</a>
 								</div>` }
 }
-
+//  Pagination :
 function firstPage (a,b) {
 	contentEl.innerHTML = ""
 	contentPush(a,b)

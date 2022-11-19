@@ -1,3 +1,4 @@
+// Allocation of Variables :
 let birdEl = document.getElementById('bird')
 let tbodyEl = document.getElementById('tbody')
 let regionEl = document.getElementById('country')
@@ -18,7 +19,7 @@ let rowCount = 50;
 let country = "IN"
 let response;
 let result;
-
+// Fetching datas from Static-API :
 let requestOptions = {
     method: 'GET',
     headers: {'X-eBirdApiToken' : 'hj5rpeff3kie'}
@@ -26,7 +27,6 @@ let requestOptions = {
 async function eBird () {
     response = await fetch(`https://api.ebird.org/v2/data/obs/${country}/recent`, requestOptions)
     result = await response.json();
-    console.log(result);
 
     let locationArr = []
     let locationIdArr = []
@@ -38,7 +38,7 @@ async function eBird () {
     let birdsCount = []
     let latitude = []
     let longitude = []
-
+// Inserting datas to HTML :
     function defaultData () {
         for (let i=0; i<rowCount; i++) {
             let comName = result[i].comName
@@ -57,7 +57,7 @@ async function eBird () {
                                   <td>${lat}</td>
                                   <td>${lng}</td> </tr>`
         let value = ""
-
+// Creation of Arrays for Filters :
         function valueCollection (key) {
             for (j of key){ value+= j }
             if (key == locName){locationArr.push(value)}
@@ -78,6 +78,7 @@ async function eBird () {
         value = "";
         }
     } defaultData();
+// Retriving Unique datas from Same Array :
         function unique(arr) {
             arr.forEach(element => {
                 if (!location.includes(element)) { if (arr === locationArr) { location.push(element)
@@ -97,7 +98,7 @@ async function eBird () {
         unique(birdsCountArr)
         unique(latitudeArr)
         unique(longitudeArr)
-
+// Inserting the unique array values to options :
         function optionsAdding (arr) {
             for (let i=0; i<arr.length; i++){
                 if (arr === location) {locationEl.innerHTML +=`<option value="${location[i]}">${location[i]}</option>`}
@@ -135,7 +136,7 @@ tbodyEl.innerHTML += `<tr><td>${comName}</td>
                           <td>${lat}</td>
                           <td>${lng}</td> </tr>`}
 }
-
+// While reload variables need to be default :
 function reload () {
     searchNameEl.value = ""
     tbodyEl.innerHTML = ""
@@ -151,11 +152,10 @@ function reload () {
     latitudeEl.innerHTML +=`<option value="All Items">All Items</option>`
     longitudeEl.innerHTML +=`<option value="All Items">All Items</option>`
 }
-
+//  Search button click event :
 let resultFilter;
 searchEl.addEventListener("click", () => {
     country = regionEl.value
-    console.log(country);
     let search = searchNameEl.value
     let loc = locationEl.value
     let locId = locationIdEl.value
@@ -186,21 +186,19 @@ if (country !==""){
     eBird();
     } 
 }) 
-
+// Reset button click event :
 resetEl.addEventListener ('click', ()=>{
     rowCount = countEl.value;
     reload();
     eBird();
 })
-
+// No of Result Shown:
 function optionChange () {
     rowCount = countEl.value;
     reload();
     eBird();
 }
-
-
-
+// Media Query for Sidebar :
 function sideBar () {
     if (sidebarEl.style.width === "0em") { sidebarEl.style.width = "60em" }
     else { 
