@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: min-content;
+    font-size: 16px;
+    overflow-x: hidden; 
+    background-image: linear-gradient(to bottom, #ebacf9, #b87ec5, #875393, #592a64, #2e0338);
+}
+h1 {
+    color: aliceblue;
+    font-weight: 600;
+    text-align:center;
+    padding-top: 0.35em;
+}
+
+#nav{
+    height: 10em;
+    background-color: #2E0338;
+}
+
+#img {
+    padding-top: 1em;
+    padding-left: 33em;
+}
+
+#cards {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+.images {
+    padding: 1em;
+}
+
+.images:hover {
+    transition: 0.5ms;
+    scale: 107%;
+}
+
+#pagination{
+    text-align: center;
+}
+
+.pgbtn{
+    padding: 1em 2em;
+    margin-bottom: 2em;
+    border: none;
+    border-radius: 0.5em;
+}
+
+.pgbtn:hover{
+    background-color: #ebacf9;
+    color: white;
+    font-weight: 600;
+}
+
+@media screen and (max-width:320px) {
+    #nav{ height: 5em}
+    #cards { width: 95%}
+    .pgbtn{ padding: 0.75em 1.5em}
+}
+@media screen and (min-width:321px) and (max-width:375px) {
+    #nav{ height: 5em}
+    #cards { width: 83%}
+    .pgbtn{ padding: 0.75em 1.5em}
+}
+@media screen and (min-width:376px) and (max-width:425px) {
+    #nav{ height: 5em}
+    #cards { width: 73%}
+}
+@media screen and (min-width:426px) and (max-width:768px) {
+    #nav{ height: 7em}
+    #cards { width: 78%}
+}
+@media screen and (min-width:769px) and (max-width:1024px) {
+    #nav{ height: 9em}
+    #cards { width: 86%}
+}
+@media screen and (min-width:1025px) and (max-width:1440px) {
+    #cards { width: 82%}
+}
